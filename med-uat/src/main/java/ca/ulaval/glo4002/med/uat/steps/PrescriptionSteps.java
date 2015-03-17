@@ -11,6 +11,7 @@ import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
+import ca.ulaval.glo4002.med.applicationServices.prescriptions.PrescriptionApplicationService;
 import ca.ulaval.glo4002.med.applicationServices.prescriptions.PrescriptionForm;
 import ca.ulaval.glo4002.med.applicationServices.shared.ServiceLocator;
 import ca.ulaval.glo4002.med.core.patients.Patient;
@@ -55,6 +56,12 @@ public class PrescriptionSteps extends StatefulStep<PrescriptionStepsState> {
 
     @When("I add this prescription to the patient's record")
     public void whenIAddThisPrescriptionToThePatientsRecord() {
+        PrescriptionApplicationService service = new PrescriptionApplicationService();
+        service.addPrescription(state().patient.getIdentifier(), state().prescriptionForm);
+    }
+
+    @When("I submit the form to add to the patient's record")
+    public void whenISubmitTheFormToAddToThePatientsRecord() {
         state().request.contentType(ContentType.JSON).
                 body(state().prescriptionForm).
                 pathParam("patientIdentifier", state().patient.getIdentifier().number);

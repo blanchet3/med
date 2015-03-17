@@ -56,7 +56,7 @@
   <build>
     <resources>
       <resource>
-        <directory>${basedir}/src/test/resources/stories</directory>
+        <directory>${basedir}/src/main/resources/stories</directory>
         <filtering>false</filtering>
       </resource>
     </resources>
@@ -71,23 +71,19 @@
           <target>${java.version}</target>
         </configuration>
       </plugin>
-     <plugin>
-        <groupId>org.jbehave</groupId>
-        <artifactId>jbehave-maven-plugin</artifactId>
-        <version>4.0-beta-11</version>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.3</version>
         <executions>
           <execution>
-            <id>run-stories</id>
-            <phase>integration-test</phase>
             <configuration>
-              <includes>
-                <include>**/*Stories.java</include>
-              </includes>
-              <scope>test</scope>
+              <mainClass> ca.ulaval.glo4002.med.uat.MedStories </mainClass>
             </configuration>
             <goals>
-              <goal>run-stories-as-embeddables</goal>
+              <goal>java</goal>
             </goals>
+            <phase>integration-test</phase>
           </execution>
         </executions>
       </plugin>

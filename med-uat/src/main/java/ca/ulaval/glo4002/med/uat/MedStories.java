@@ -4,10 +4,12 @@ import static java.util.Arrays.*;
 import static org.jbehave.core.io.CodeLocations.*;
 import static org.jbehave.core.reporters.Format.*;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.jbehave.core.configuration.Configuration;
 import org.jbehave.core.configuration.MostUsefulConfiguration;
+import org.jbehave.core.embedder.Embedder;
 import org.jbehave.core.failures.FailingUponPendingStep;
 import org.jbehave.core.failures.PendingStepStrategy;
 import org.jbehave.core.io.LoadFromClasspath;
@@ -20,14 +22,22 @@ import org.jbehave.core.steps.ScanningStepsFactory;
 
 public class MedStories extends JUnitStories {
 
-    // Par défaut jbehave ne rapportera pas un step pending comme une erreur.
     private PendingStepStrategy pendingStepStrategy = new FailingUponPendingStep();
 
-    // On peut aussi configuré le type de rapport qu'on veut avoir.
     private Format[] formats = new Format[]{CONSOLE};
     private StoryReporterBuilder reporterBuilder = new StoryReporterBuilder()
             .withCodeLocation(codeLocationFromClass(MedStories.class)).withFailureTrace(true).withFailureTraceCompression(true)
             .withDefaultFormats().withFormats(formats);
+
+    public static void main(String[] args) {
+        new MedStories().embedder.runAsEmbeddables(Arrays.asList(MedStories.class.getCanonicalName()));
+    }
+
+    private Embedder embedder = new Embedder();
+
+    public MedStories() {
+        useEmbedder(embedder);
+    }
 
     @Override
     public Configuration configuration() {
@@ -48,7 +58,7 @@ public class MedStories extends JUnitStories {
 
 }
 
-// *** La configuration pour le francais est horrible à trouver sur le net, donc la voici
+// *** Changing the language is not easy, here is how to make it detect the french keywords :
 //
 // PendingStepStrategy pendingStepStrategy = new FailingUponPendingStep();
 // Format[] formats = new Format[] { CONSOLE };
