@@ -11,7 +11,7 @@ import org.jbehave.core.annotations.When;
 
 import ca.ulaval.glo4002.med.applicationServices.prescriptions.PrescriptionApplicationService;
 import ca.ulaval.glo4002.med.applicationServices.prescriptions.PrescriptionForm;
-import ca.ulaval.glo4002.med.applicationServices.shared.ServiceLocator;
+import ca.ulaval.glo4002.med.applicationServices.shared.locator.ServiceLocator;
 import ca.ulaval.glo4002.med.core.patients.Patient;
 import ca.ulaval.glo4002.med.core.patients.PatientIdentifier;
 import ca.ulaval.glo4002.med.core.patients.PatientRepository;
@@ -58,7 +58,7 @@ public class PrescriptionSteps extends StatefulStep<PrescriptionStepsState> {
     public void whenISubmitTheFormToAddToThePatientsRecord() {
         state().request.contentType(ContentType.JSON).
                 body(state().prescriptionForm).
-                pathParam("patientIdentifier", state().patient.getIdentifier().number);
+                pathParam("patientIdentifier", state().patient.getIdentifier().describe());
 
         state().response = state().request.when().post("/patients/{patientIdentifier}/prescriptions");
     }

@@ -8,7 +8,7 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <artifactId>med-interfaces</artifactId>
-  <name>med-rest</name>
+  <name>med-interfaces</name>
   <url>http://maven.apache.org</url>
 
   <dependencies>

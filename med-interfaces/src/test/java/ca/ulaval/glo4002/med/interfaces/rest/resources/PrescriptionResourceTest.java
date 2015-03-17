@@ -61,7 +61,8 @@ public class PrescriptionResourceTest {
 
         Response response = resource.addPrescription(PATIENT_IDENTIFIER, form);
 
-        assertEquals(URI.create("/patients/" + PATIENT_IDENTIFIER.number + "/prescriptions/" + VALID_PRESCRIPTION_IDENTIFIER.number),
+        assertEquals(
+                URI.create("/patients/" + PATIENT_IDENTIFIER.describe() + "/prescriptions/" + VALID_PRESCRIPTION_IDENTIFIER.describe()),
                 response.getHeaders().getFirst("Location"));
     }
 

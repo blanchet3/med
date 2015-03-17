@@ -1,4 +1,4 @@
-package ca.ulaval.glo4002.med.applicationServices.shared;
+package ca.ulaval.glo4002.med.applicationServices.shared.locator;
 
 import java.util.HashMap;
 import java.util.concurrent.locks.ReentrantLock;

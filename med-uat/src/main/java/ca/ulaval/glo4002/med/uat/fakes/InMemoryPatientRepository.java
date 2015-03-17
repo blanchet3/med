@@ -1,4 +1,4 @@
-package ca.ulaval.glo4002.med.persistence;
+package ca.ulaval.glo4002.med.uat.fakes;
 
 import java.util.ArrayList;
 import java.util.List;

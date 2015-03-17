@@ -25,7 +25,8 @@ public class GespharPrescriptionFactoryTest {
     public void assignesAPrescriptionIdentifierToThePrescription() {
         Prescription prescription = factory.create(DIN, DATE, PHYSICIAN, RENEWALS);
 
-        assertNotNull(prescription.getIdentifier().number);
+        assertNotNull(prescription.getIdentifier().describe());
+        assertNotEquals("", prescription.getIdentifier().describe());
     }
 
     @Test
@@ -33,7 +34,7 @@ public class GespharPrescriptionFactoryTest {
         Prescription prescription1 = factory.create(DIN, DATE, PHYSICIAN, RENEWALS);
         Prescription prescription2 = factory.create(DIN, DATE, PHYSICIAN, RENEWALS);
 
-        assertNotEquals(prescription1.getIdentifier().number, prescription2.getIdentifier().number);
+        assertNotEquals(prescription1.getIdentifier().describe(), prescription2.getIdentifier().describe());
     }
 
     @Test

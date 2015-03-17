@@ -39,6 +39,6 @@ public class PrescriptionResource {
     }
 
     private String convertToUrl(PatientIdentifier patientIdentifier, PrescriptionIdentifier prescriptionIdentifier) {
-        return String.format("/patients/%s/prescriptions/%s", patientIdentifier.number, prescriptionIdentifier.number);
+        return String.format("/patients/%s/prescriptions/%s", patientIdentifier.describe(), prescriptionIdentifier.describe());
     }
 }

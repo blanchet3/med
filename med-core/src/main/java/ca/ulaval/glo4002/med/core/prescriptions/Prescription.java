@@ -2,13 +2,30 @@ package ca.ulaval.glo4002.med.core.prescriptions;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+
+@Entity
 public class Prescription {
 
+    @EmbeddedId
     private PrescriptionIdentifier identifier;
+
+    @Column
     private String din;
+
+    @Column
     private Date date;
+
+    @Column
     private String physician;
+
+    @Column
     private int renewals;
+
+    protected Prescription() {
+    }
 
     public Prescription(PrescriptionIdentifier identifier, String din, Date date, String physician, int renewals) {
         this.identifier = identifier;

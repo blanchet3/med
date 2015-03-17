@@ -1,4 +1,4 @@
-package ca.ulaval.glo4002.med.applicationServices.shared;
+package ca.ulaval.glo4002.med.applicationServices.shared.locator;
 
 public class DoubleServiceRegistrationException extends RuntimeException {
 

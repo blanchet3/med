@@ -1,6 +1,6 @@
 package ca.ulaval.glo4002.med.applicationServices.prescriptions;
 
-import ca.ulaval.glo4002.med.applicationServices.shared.ServiceLocator;
+import ca.ulaval.glo4002.med.applicationServices.shared.locator.ServiceLocator;
 import ca.ulaval.glo4002.med.core.patients.Patient;
 import ca.ulaval.glo4002.med.core.patients.PatientIdentifier;
 import ca.ulaval.glo4002.med.core.patients.PatientRepository;
@@ -30,6 +30,8 @@ public class PrescriptionApplicationService {
         Prescription prescription = prescriptionFactory.create(form.din, form.date, form.physician, form.renewals);
 
         patient.addPrescription(prescription);
+        patientRepository.persist(patient);
+
         return prescription.getIdentifier();
     }
 

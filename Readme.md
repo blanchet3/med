@@ -3,15 +3,13 @@ Med
 
 This is a sample project to show the full stack integration of jbehave -> rest -> DDD -> hibernate.
 
-The hibernate persistence is missing for now, it's only InMemory.
-
 To run the tests : mvn test
-To run jbehave tests too : mvn integration-test (NOT working for now, for some reason)
-To execute the projet: mvn exec:java (this will start the server on port 8080)
+To run jbehave and integration tests too : mvn integration-test
+To run the server : For now exec:java does NOT work, you need to open it in eclipse and run the RestMain class.
 
-By default (and because I haven't configured anything else yet), the application will run in the Demo context. This means you get a couple of patients pre-filled, see the DemoContext file.
+By default (and because I haven't made it configurable yet), the application will run in the Demo context. This means you get a couple of patients pre-filled, see the DemoContext file.
 
-Here is a sample request you can try : 
+Here is a sample request you can try :
 
 _POST http://localhost:8080/patients/1234/prescriptions_
 ```
@@ -23,4 +21,9 @@ _POST http://localhost:8080/patients/1234/prescriptions_
 }
 ```
 
-This is not yet completed.
+Things to fix
+=============
+
+  * The exec:java to start the server
+  * I'm not sure the EntityManagerProvider is in the right project.
+  * Create An architecture guide

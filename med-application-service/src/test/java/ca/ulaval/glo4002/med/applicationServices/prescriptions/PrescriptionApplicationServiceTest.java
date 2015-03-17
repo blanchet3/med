@@ -10,6 +10,7 @@ import java.util.Date;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InOrder;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -122,6 +123,17 @@ public class PrescriptionApplicationServiceTest {
         service.addPrescription(PATIENT_IDENTIFIER, form);
 
         verify(patient).addPrescription(prescription);
+    }
+
+    @Test
+    public void addPrescriptionPersistsThePatientWithItsPrescription() {
+        PrescriptionForm form = createValidForm();
+
+        service.addPrescription(PATIENT_IDENTIFIER, form);
+
+        InOrder order = inOrder(patient, patientRepository);
+        order.verify(patient).addPrescription(any(Prescription.class));
+        order.verify(patientRepository).persist(patient);
     }
 
     @Test

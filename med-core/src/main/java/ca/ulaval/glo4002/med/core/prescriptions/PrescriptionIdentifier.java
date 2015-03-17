@@ -1,10 +1,19 @@
 package ca.ulaval.glo4002.med.core.prescriptions;
 
+import java.io.Serializable;
 import java.util.UUID;
 
-public class PrescriptionIdentifier {
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
 
-    public final UUID number;
+@Embeddable
+public class PrescriptionIdentifier implements Serializable {
+
+    @Column
+    private UUID number;
+
+    protected PrescriptionIdentifier() {
+    }
 
     public PrescriptionIdentifier(UUID number) {
         this.number = number;
@@ -14,4 +23,9 @@ public class PrescriptionIdentifier {
         return new PrescriptionIdentifier(UUID.randomUUID());
     }
 
+    public String describe() {
+        return number.toString();
+    }
+
+    private static final long serialVersionUID = 1L;
 }
