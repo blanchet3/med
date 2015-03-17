@@ -3,8 +3,6 @@ package ca.ulaval.glo4002.med.uat.steps;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 
-import java.util.Date;
-
 import javax.ws.rs.core.Response.Status;
 
 import org.jbehave.core.annotations.Given;
@@ -21,6 +19,7 @@ import ca.ulaval.glo4002.med.core.prescriptions.PrescriptionFactory;
 import ca.ulaval.glo4002.med.core.prescriptions.PrescriptionIdentifier;
 import ca.ulaval.glo4002.med.uat.fakes.FakePrescriptionFactory;
 import ca.ulaval.glo4002.med.uat.steps.PrescriptionSteps.PrescriptionStepsState;
+import ca.ulaval.glo4002.med.uat.steps.fixtures.PrescriptionFormBuilder;
 import ca.ulaval.glo4002.med.uat.steps.state.StatefulStep;
 import ca.ulaval.glo4002.med.uat.steps.state.StepState;
 
@@ -41,17 +40,12 @@ public class PrescriptionSteps extends StatefulStep<PrescriptionStepsState> {
 
     @Given("a prescription with missing information")
     public void givenAPrescriptionWithMissingInformation() {
-        state().prescriptionForm = new PrescriptionForm();
+        state().prescriptionForm = new PrescriptionFormBuilder().build();
     }
 
     @Given("a valid prescription form")
     public void givenAValidPrescriptionForm() {
-        PrescriptionForm form = new PrescriptionForm();
-        form.din = "din12387";
-        form.date = new Date();
-        form.physician = "986723";
-        form.renewals = 0;
-        state().prescriptionForm = form;
+        state().prescriptionForm = PrescriptionFormBuilder.createValidForm().build();
     }
 
     @When("I add this prescription to the patient's record")
