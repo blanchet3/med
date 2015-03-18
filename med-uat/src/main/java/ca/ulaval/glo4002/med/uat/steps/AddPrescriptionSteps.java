@@ -18,14 +18,14 @@ import ca.ulaval.glo4002.med.core.patients.PatientRepository;
 import ca.ulaval.glo4002.med.core.prescriptions.PrescriptionFactory;
 import ca.ulaval.glo4002.med.core.prescriptions.PrescriptionIdentifier;
 import ca.ulaval.glo4002.med.uat.fakes.FakePrescriptionFactory;
-import ca.ulaval.glo4002.med.uat.steps.PrescriptionSteps.PrescriptionStepsState;
-import ca.ulaval.glo4002.med.uat.steps.fixtures.PrescriptionFormBuilder;
+import ca.ulaval.glo4002.med.uat.steps.AddPrescriptionSteps.PrescriptionStepsState;
+import ca.ulaval.glo4002.med.uat.steps.fixtures.PrescriptionBuilder;
 import ca.ulaval.glo4002.med.uat.steps.state.StatefulStep;
 import ca.ulaval.glo4002.med.uat.steps.state.StepState;
 
 import com.jayway.restassured.http.ContentType;
 
-public class PrescriptionSteps extends StatefulStep<PrescriptionStepsState> {
+public class AddPrescriptionSteps extends StatefulStep<PrescriptionStepsState> {
 
     protected PrescriptionStepsState getInitialState() {
         return new PrescriptionStepsState();
@@ -40,12 +40,12 @@ public class PrescriptionSteps extends StatefulStep<PrescriptionStepsState> {
 
     @Given("a prescription with missing information")
     public void givenAPrescriptionWithMissingInformation() {
-        state().prescriptionForm = new PrescriptionFormBuilder().build();
+        state().prescriptionForm = new PrescriptionBuilder().buildForm();
     }
 
     @Given("a valid prescription form")
     public void givenAValidPrescriptionForm() {
-        state().prescriptionForm = PrescriptionFormBuilder.createValidForm().build();
+        state().prescriptionForm = PrescriptionBuilder.createValid().buildForm();
     }
 
     @When("I add this prescription to the patient's record")

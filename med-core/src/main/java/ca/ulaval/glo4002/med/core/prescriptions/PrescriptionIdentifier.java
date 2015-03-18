@@ -27,5 +27,19 @@ public class PrescriptionIdentifier implements Serializable {
         return number.toString();
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj != null && (obj instanceof PrescriptionIdentifier)) {
+            return ((PrescriptionIdentifier) obj).number.equals(number);
+        }
+
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return number.hashCode();
+    }
+
     private static final long serialVersionUID = 1L;
 }

@@ -50,7 +50,7 @@ public class PrescriptionApplicationServiceTest {
         willReturn(prescription).given(prescriptionFactory).create(anyString(), any(Date.class), anyString(), anyInt());
     }
 
-    @Test(expected = InvalidPrescriptionFormException.class)
+    @Test(expected = InvalidPrescriptionFormApplicationException.class)
     public void addValidatesThatTheDinIsProvided() {
         PrescriptionForm form = createValidForm();
         form.din = null;
@@ -58,7 +58,7 @@ public class PrescriptionApplicationServiceTest {
         service.addPrescription(PATIENT_IDENTIFIER, form);
     }
 
-    @Test(expected = InvalidPrescriptionFormException.class)
+    @Test(expected = InvalidPrescriptionFormApplicationException.class)
     public void addValidatesThatTheDinIsNotEmpty() {
         PrescriptionForm form = createValidForm();
         form.din = "";
@@ -66,7 +66,7 @@ public class PrescriptionApplicationServiceTest {
         service.addPrescription(PATIENT_IDENTIFIER, form);
     }
 
-    @Test(expected = InvalidPrescriptionFormException.class)
+    @Test(expected = InvalidPrescriptionFormApplicationException.class)
     public void addValidatesThatTheDateIsProvided() {
         PrescriptionForm form = createValidForm();
         form.date = null;
@@ -74,7 +74,7 @@ public class PrescriptionApplicationServiceTest {
         service.addPrescription(PATIENT_IDENTIFIER, form);
     }
 
-    @Test(expected = InvalidPrescriptionFormException.class)
+    @Test(expected = InvalidPrescriptionFormApplicationException.class)
     public void addValidatesThatThePhysicianIsProvided() {
         PrescriptionForm form = createValidForm();
         form.physician = null;
@@ -82,7 +82,7 @@ public class PrescriptionApplicationServiceTest {
         service.addPrescription(PATIENT_IDENTIFIER, form);
     }
 
-    @Test(expected = InvalidPrescriptionFormException.class)
+    @Test(expected = InvalidPrescriptionFormApplicationException.class)
     public void addValidatesThatThePhysicianIsNotEmpty() {
         PrescriptionForm form = createValidForm();
         form.physician = "";
@@ -90,7 +90,7 @@ public class PrescriptionApplicationServiceTest {
         service.addPrescription(PATIENT_IDENTIFIER, form);
     }
 
-    @Test(expected = InvalidPrescriptionFormException.class)
+    @Test(expected = InvalidPrescriptionFormApplicationException.class)
     public void addValidatesThatTheNumberOfRenewalsIsGreaterOrEqualZero() {
         PrescriptionForm form = createValidForm();
         form.renewals = -1;

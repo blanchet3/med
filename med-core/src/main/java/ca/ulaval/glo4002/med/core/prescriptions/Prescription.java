@@ -55,4 +55,8 @@ public class Prescription {
         return renewals;
     }
 
+    public boolean hasIdentifier(PrescriptionIdentifier prescriptionIdentifier) {
+        return identifier.equals(prescriptionIdentifier);
+    }
+
 }

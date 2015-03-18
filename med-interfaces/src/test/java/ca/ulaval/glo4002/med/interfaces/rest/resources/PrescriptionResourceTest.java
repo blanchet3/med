@@ -16,7 +16,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import ca.ulaval.glo4002.med.applicationServices.prescriptions.InvalidPrescriptionFormException;
+import ca.ulaval.glo4002.med.applicationServices.prescriptions.InvalidPrescriptionFormApplicationException;
 import ca.ulaval.glo4002.med.applicationServices.prescriptions.PrescriptionApplicationService;
 import ca.ulaval.glo4002.med.applicationServices.prescriptions.PrescriptionForm;
 import ca.ulaval.glo4002.med.core.patients.PatientIdentifier;
@@ -25,7 +25,7 @@ import ca.ulaval.glo4002.med.core.prescriptions.PrescriptionIdentifier;
 @RunWith(MockitoJUnitRunner.class)
 public class PrescriptionResourceTest {
 
-    private static final InvalidPrescriptionFormException INVALID_PRESCRIPTION_FORM_EXCEPTION = new InvalidPrescriptionFormException();
+    private static final InvalidPrescriptionFormApplicationException INVALID_PRESCRIPTION_FORM_EXCEPTION = new InvalidPrescriptionFormApplicationException();
 
     private static final PrescriptionIdentifier VALID_PRESCRIPTION_IDENTIFIER = PrescriptionIdentifier.create();
 
@@ -66,7 +66,7 @@ public class PrescriptionResourceTest {
                 response.getHeaders().getFirst("Location"));
     }
 
-    @Test(expected = InvalidPrescriptionFormException.class)
+    @Test(expected = InvalidPrescriptionFormApplicationException.class)
     public void addingAPrescriptionShouldThrowAnException() {
         PrescriptionForm form = givenAnInvalidForm();
 

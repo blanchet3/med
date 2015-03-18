@@ -37,20 +37,19 @@ public class PrescriptionApplicationService {
 
     private void validateForm(PrescriptionForm form) {
         if (form.din == null || form.din.equals("")) {
-            throw new InvalidPrescriptionFormException();
+            throw new InvalidPrescriptionFormApplicationException();
         }
 
         if (form.date == null) {
-            throw new InvalidPrescriptionFormException();
+            throw new InvalidPrescriptionFormApplicationException();
         }
 
         if (form.physician == null || form.physician.equals("")) {
-            throw new InvalidPrescriptionFormException();
+            throw new InvalidPrescriptionFormApplicationException();
         }
 
         if (form.renewals < 0) {
-            throw new InvalidPrescriptionFormException();
+            throw new InvalidPrescriptionFormApplicationException();
         }
     }
-
 }

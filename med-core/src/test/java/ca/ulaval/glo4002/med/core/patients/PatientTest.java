@@ -24,7 +24,7 @@ public class PatientTest {
     public void canAddAPrescriptionToAPatient() {
         PrescriptionIdentifier prescriptionIdentifier = PrescriptionIdentifier.create();
         Prescription prescription = mock(Prescription.class);
-        willReturn(prescriptionIdentifier).given(prescription).getIdentifier();
+        willReturn(true).given(prescription).hasIdentifier(prescriptionIdentifier);
 
         patient.addPrescription(prescription);
 

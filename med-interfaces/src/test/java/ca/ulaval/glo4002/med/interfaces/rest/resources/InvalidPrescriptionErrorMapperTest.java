@@ -8,7 +8,7 @@ import javax.ws.rs.core.Response.Status;
 import org.junit.Before;
 import org.junit.Test;
 
-import ca.ulaval.glo4002.med.applicationServices.prescriptions.InvalidPrescriptionFormException;
+import ca.ulaval.glo4002.med.applicationServices.prescriptions.InvalidPrescriptionFormApplicationException;
 
 public class InvalidPrescriptionErrorMapperTest {
 
@@ -21,7 +21,7 @@ public class InvalidPrescriptionErrorMapperTest {
 
     @Test
     public void createsRestErrorWithTheExceptionsCode() {
-        InvalidPrescriptionFormException exception = new InvalidPrescriptionFormException();
+        InvalidPrescriptionFormApplicationException exception = new InvalidPrescriptionFormApplicationException();
         Response response = mapper.toResponse(exception);
 
         assertEquals(exception.getCode(), ((RestError) response.getEntity()).code);
@@ -29,7 +29,7 @@ public class InvalidPrescriptionErrorMapperTest {
 
     @Test
     public void createsABadRequest() {
-        Response response = mapper.toResponse(new InvalidPrescriptionFormException());
+        Response response = mapper.toResponse(new InvalidPrescriptionFormApplicationException());
 
         assertEquals(Status.BAD_REQUEST.getStatusCode(), response.getStatus());
     }

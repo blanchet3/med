@@ -25,7 +25,6 @@ public class GespharPrescriptionFactoryTest {
     public void assignesAPrescriptionIdentifierToThePrescription() {
         Prescription prescription = factory.create(DIN, DATE, PHYSICIAN, RENEWALS);
 
-        assertNotNull(prescription.getIdentifier().describe());
         assertNotEquals("", prescription.getIdentifier().describe());
     }
 

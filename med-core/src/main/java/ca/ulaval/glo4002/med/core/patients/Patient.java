@@ -37,7 +37,7 @@ public class Patient {
     }
 
     public boolean hasPrescription(PrescriptionIdentifier prescriptionIdentifier) {
-        return prescriptions.stream().anyMatch(x -> x.getIdentifier().equals(prescriptionIdentifier));
+        return prescriptions.stream().anyMatch(x -> x.hasIdentifier(prescriptionIdentifier));
     }
 
 }
