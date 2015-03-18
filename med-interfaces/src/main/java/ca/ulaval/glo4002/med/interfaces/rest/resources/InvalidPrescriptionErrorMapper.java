@@ -12,7 +12,7 @@ public class InvalidPrescriptionErrorMapper implements ExceptionMapper<InvalidPr
 
     @Override
     public Response toResponse(InvalidPrescriptionFormException exception) {
-        return Response.status(Status.BAD_REQUEST).entity(new RestError("PRES001", exception.getMessage())).build();
+        return Response.status(Status.BAD_REQUEST).entity(new RestError(exception.getCode(), exception.getMessage())).build();
     }
 
 }

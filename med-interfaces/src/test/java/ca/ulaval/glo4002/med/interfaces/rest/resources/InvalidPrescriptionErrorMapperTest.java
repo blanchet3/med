@@ -20,10 +20,11 @@ public class InvalidPrescriptionErrorMapperTest {
     }
 
     @Test
-    public void createsRestErrorWithCodePres001() {
-        Response response = mapper.toResponse(new InvalidPrescriptionFormException());
+    public void createsRestErrorWithTheExceptionsCode() {
+        InvalidPrescriptionFormException exception = new InvalidPrescriptionFormException();
+        Response response = mapper.toResponse(exception);
 
-        assertEquals("PRES001", ((RestError) response.getEntity()).code);
+        assertEquals(exception.getCode(), ((RestError) response.getEntity()).code);
     }
 
     @Test
